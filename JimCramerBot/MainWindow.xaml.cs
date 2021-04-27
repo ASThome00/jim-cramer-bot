@@ -16,13 +16,22 @@ using System.Windows.Shapes;
 namespace JimCramerBot
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for JimCramerBot.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void xJimCramerBot_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                this.DragMove();
+            }
+            catch (InvalidOperationException) { }
         }
     }
 }

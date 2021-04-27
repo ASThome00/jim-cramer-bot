@@ -3,23 +3,55 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:JimCramerBot"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        AllowsTransparency="True"
+        Name="xJimCramerBot"
+        Title="Jim Cramer Bot" Height="450" Width="800" ResizeMode="CanResizeWithGrip" WindowStyle="None" Background="Transparent" MouseLeftButtonDown="xJimCramerBot_MouseLeftButtonDown" >
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="FlatButtonStyle">
+            <Setter Property="Background" Value="#88b7d3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Button.Effect">
+                <Setter.Value>
+                    <DropShadowEffect/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="0"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <!--Main Grid-->
-    <Grid x:Name="xMainGrid" Background="#293241">
+    <Grid x:Name="xMainGrid">
         <!--Main Grid Definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="90*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="xSidebar" Grid.Column="0">
-            
-        </Grid>
+        <Border Grid.Column="0" BorderThickness="1,0,0,0" CornerRadius="7,0,0,7" Background="#f1856a" BorderBrush="Transparent">
+            <!--Side Bar Grid-->
+            <Grid x:Name="xSidebar" Grid.Column="0" Background="Transparent">
 
-        <Grid>
-            
-        </Grid>
+            </Grid>
+        </Border>
+
+        <Border Grid.Column="1" BorderThickness="0,1,0,0" CornerRadius="0,7,7,0" Background="#293241" BorderBrush="Transparent">
+            <!--Account View-->
+            <Grid Grid.Column="1" Background="Transparent">
+                
+            </Grid>
+        </Border>
     </Grid>
 </Window>
