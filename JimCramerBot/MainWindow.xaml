@@ -40,6 +40,7 @@
             <ColumnDefinition Width="90*"/>
         </Grid.ColumnDefinitions>
 
+        <!--Rounded Sidebar Border-->
         <Border Grid.Column="0" BorderThickness="1,0,0,0" CornerRadius="7,0,0,7" Background="#f1856a" BorderBrush="Transparent">
             <!--Side Bar Grid-->
             <Grid x:Name="xSidebar" Grid.Column="0" Background="Transparent">
@@ -47,10 +48,72 @@
             </Grid>
         </Border>
 
+        <!--Rounded Account View Border-->
         <Border Grid.Column="1" BorderThickness="0,1,0,0" CornerRadius="0,7,7,0" Background="#293241" BorderBrush="Transparent">
             <!--Account View-->
             <Grid Grid.Column="1" Background="Transparent">
+                <!--Column Definitions-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <!--Row Definitions-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="70*"/>
+                    <RowDefinition Height="15*"/>
+                </Grid.RowDefinitions>
                 
+                <!--Form Buttons Grid-->
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <!--Column Definitions-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!--Minimize Button-->
+                    <Button x:Name="xMinimizeButton" Grid.Column="1" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="0" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+
+                    <!--Resize Button-->
+                    <Button x:Name="xResizeButton" Grid.Column="2" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="1" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+
+                    <!--Close Button-->
+                    <Button x:Name="xCloseButton" Grid.Column="3" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="r" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+
+                <!--Account Summary Label-->
+                <Viewbox x:Name="xAccountSummaryLabelViewbox" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left">
+                    <Label Name="xAccountSummaryLabel" Content="Account Summary:" FontFamily="Arial" FontWeight="Bold" Foreground="White" >
+                        <Label.Effect>
+                            <DropShadowEffect ShadowDepth="2"/>
+                        </Label.Effect>
+                    </Label>
+                </Viewbox>
+                
+                <!--Account Value Label-->
+                <Viewbox x:Name="xAccountValueLabelViewbox" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
+                    <Label Name="xAccountValueLabel" Content="$9,999.99" FontFamily="Arial" FontWeight="Bold" FontSize="30" Foreground="Green" Padding="0,0,10,0">
+                        <Label.Effect>
+                            <DropShadowEffect ShadowDepth="2"/>
+                        </Label.Effect>
+                    </Label>
+                </Viewbox>
             </Grid>
         </Border>
     </Grid>
