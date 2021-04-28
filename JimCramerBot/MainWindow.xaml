@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         AllowsTransparency="True"
         Name="xJimCramerBot"
-        Title="Jim Cramer Bot" Height="450" Width="800" ResizeMode="CanResizeWithGrip" WindowStyle="None" Background="Transparent" MouseLeftButtonDown="xJimCramerBot_MouseLeftButtonDown" >
+        Title="Jim Cramer Bot" Height="450" Width="800" ResizeMode="CanResizeWithGrip" WindowStyle="None" Background="Transparent" BorderBrush="Transparent" MouseLeftButtonDown="xJimCramerBot_MouseLeftButtonDown" >
     <Window.Resources>
         <Style TargetType="Button" x:Key="FlatButtonStyle">
             <Setter Property="Background" Value="#88b7d3"/>
@@ -78,19 +78,19 @@
                     <!--Minimize Button-->
                     <Button x:Name="xMinimizeButton" Grid.Column="1" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="0" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand">
                         <Button.Effect>
-                            <DropShadowEffect/>
+                            <DropShadowEffect ShadowDepth="2"/>
                         </Button.Effect>
                     </Button>
 
                     <!--Resize Button-->
                     <Button x:Name="xResizeButton" Grid.Column="2" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="1" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand">
                         <Button.Effect>
-                            <DropShadowEffect/>
+                            <DropShadowEffect ShadowDepth="2"/>
                         </Button.Effect>
                     </Button>
 
                     <!--Close Button-->
-                    <Button x:Name="xCloseButton" Grid.Column="3" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="r" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand">
+                    <Button x:Name="xCloseButton" Grid.Column="3" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="r" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand" Click="xCloseButton_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
@@ -114,6 +114,118 @@
                         </Label.Effect>
                     </Label>
                 </Viewbox>
+
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <!--Row Definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="80*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Top Tickers Label-->
+                    <Viewbox x:Name="xTopTickersLabelViewbox" Grid.Row="0" HorizontalAlignment="Center">
+                        <Border BorderThickness="0,0,0,1" BorderBrush="White">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2"/>
+                            </Border.Effect>
+                            <Label x:Name="xTopTickersLabel" Content="Your Top Tickers" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="8"/>
+                        </Border>
+                    </Viewbox>
+                    
+                    <!--Top Tickers List-->
+                    <Viewbox x:Name="xTopTickersListViewbox" Grid.Row="1" Margin="10,0,10,10">
+                        <Border x:Name="xTopTickersListBorder" BorderThickness="1" BorderBrush="#f1856a" CornerRadius="10">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2"/>
+                            </Border.Effect>
+                            <ListBox x:Name="xTopTickersList" Width="200" Height="126" BorderThickness="0" Background="Transparent" Foreground="White" FontFamily="Arial"/>
+                        </Border>
+                    </Viewbox>
+                </Grid>
+                
+                <!--Statuses Grid-->
+                <Grid x:Name="xStatusesGrid" Grid.Row="2" Grid.Column="1">
+                    <!--Column Definitions-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Row Definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="30*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!--Buying Power Label-->
+                    <Viewbox x:Name="xBuyingPowerViewbox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+                        <Label Name="xBuyingPowerLabel" Content="Buying Power: $99.99" FontFamily="Arial" FontWeight="Bold" Foreground="White">
+                            <Label.Effect>
+                                <DropShadowEffect ShadowDepth="2"/>
+                            </Label.Effect>
+                        </Label>
+                    </Viewbox>
+                    
+                    <!--Trade History-->
+                    <Viewbox x:Name="xTradeHistoryViewbox" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10">
+                        <Border x:Name="xTradeHistoryBorder" BorderThickness="1" BorderBrush="#f1856a" CornerRadius="10">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2"/>
+                            </Border.Effect>
+                            <ListBox x:Name="xTradeHistoryList" Background="Transparent" BorderThickness="0" Height="100" Width="200"/>
+                        </Border>
+                    </Viewbox>
+                    
+                    <!--Statuses Grid-->
+                    <Grid x:Name="xStatusLabelsGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,10">
+                        <!--Row Definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
+                        </Grid.RowDefinitions>
+                        <!--Column Definitions-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--UI Market Status Label-->
+                        <Viewbox x:Name="xMarketStatusUILabelViewbox" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">
+                            <Label x:Name="xMarketStatusUILabel" Content="Market Status:" Foreground="White" FontFamily="Arial" FontWeight="Bold">
+                                <Label.Effect>
+                                    <DropShadowEffect ShadowDepth="2"/>
+                                </Label.Effect>
+                            </Label>
+                        </Viewbox>
+
+                        <!--Market Status Label-->
+                        <Viewbox x:Name="xMarketStatusLabelViewbox" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
+                            <Label x:Name="xMarketStatusLabel" Content="Pre-Market" Foreground="Yellow" FontFamily="Arial" FontWeight="Bold">
+                                <Label.Effect>
+                                    <DropShadowEffect ShadowDepth="2"/>
+                                </Label.Effect>
+                            </Label>
+                        </Viewbox>
+
+                        <!--UI Bot Status Label-->
+                        <Viewbox x:Name="xBotStatusUILabelViewbox" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left">
+                            <Label x:Name="xBotStatusUILabel" Content="Bot Status:" Foreground="White" FontFamily="Arial" FontWeight="Bold">
+                                <Label.Effect>
+                                    <DropShadowEffect ShadowDepth="2"/>
+                                </Label.Effect>
+                            </Label>
+                        </Viewbox>
+
+                        <!--Bot Status Label-->
+                        <Viewbox x:Name="xBotStatusLabelViewbox" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
+                            <Label x:Name="xBotStatusLabel" Content="Running" Foreground="Green" FontFamily="Arial" FontWeight="Bold">
+                                <Label.Effect>
+                                    <DropShadowEffect ShadowDepth="2"/>
+                                </Label.Effect>
+                            </Label>
+                        </Viewbox>
+                    </Grid>
+                </Grid>
             </Grid>
         </Border>
     </Grid>

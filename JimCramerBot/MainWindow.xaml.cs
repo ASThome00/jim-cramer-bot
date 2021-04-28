@@ -33,5 +33,10 @@ namespace JimCramerBot
             }
             catch (InvalidOperationException) { }
         }
+
+        private void xCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
