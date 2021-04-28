@@ -44,7 +44,28 @@
         <Border Grid.Column="0" BorderThickness="1,0,0,0" CornerRadius="7,0,0,7" Background="#f1856a" BorderBrush="Transparent">
             <!--Side Bar Grid-->
             <Grid x:Name="xSidebar" Grid.Column="0" Background="Transparent">
-
+                <!--Column Definitions-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                
+                <!--Cramer Logo-->
+                <Viewbox x:Name="xCramerLogoViewbox" Grid.Row="0" Margin="3" >
+                    <Image x:Name="xCramerLogo" Source="/assets/images/cramer.png"/>
+                </Viewbox>
+                
+                <!--Settings Button-->
+                <Viewbox x:Name="xSettingsButtonViewbox" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Button x:Name="xSettingsButton" Cursor="Hand" Width="300" Height="300" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                        <Button.Content>
+                            <Image Source="{StaticResource Settings}" Margin="30,30,30,0"/>
+                        </Button.Content>
+                    </Button>
+                </Viewbox>
             </Grid>
         </Border>
 
@@ -76,14 +97,14 @@
                     </Grid.ColumnDefinitions>
                     
                     <!--Minimize Button-->
-                    <Button x:Name="xMinimizeButton" Grid.Column="1" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="0" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand">
+                    <Button x:Name="xMinimizeButton" Grid.Column="1" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="0" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand" Click="xMinimizeButton_Click">
                         <Button.Effect>
                             <DropShadowEffect ShadowDepth="2"/>
                         </Button.Effect>
                     </Button>
 
                     <!--Resize Button-->
-                    <Button x:Name="xResizeButton" Grid.Column="2" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="1" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand">
+                    <Button x:Name="xResizeButton" Grid.Column="2" Background="Transparent" Foreground="White" BorderBrush="Transparent" Content="1" FontFamily="Marlett" FontWeight="Bold" Cursor="Hand" Click="xResizeButton_Click">
                         <Button.Effect>
                             <DropShadowEffect ShadowDepth="2"/>
                         </Button.Effect>
@@ -225,6 +246,35 @@
                             </Label>
                         </Viewbox>
                     </Grid>
+                </Grid>
+                
+                <!--Action Button Grid-->
+                <Grid x:Name="xActionButtonGrid" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                    <!--Column Definitions-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Toggle Bot Status Button-->
+                    <Viewbox x:Name="xToggleBotStatusButtonViewbox" Grid.Column="3" Margin="0,5,0,15">
+                        <Button x:Name="xToggleBotStatusButton" Style="{StaticResource FlatButtonStyle}" Content="Stop Bot" FontFamily="Arial" FontWeight="Bold" Foreground="White" Cursor="Hand" Width="110">
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="2"/>
+                            </Button.Effect>
+                        </Button>
+                    </Viewbox>
+
+                    <!--Emergency Sell Button-->
+                    <Viewbox x:Name="xEmergencySellButtonViewbox" Grid.Column="2" Margin="0,5,0,15">
+                        <Button x:Name="xEmergencySellButton" Style="{StaticResource FlatButtonStyle}" Content="Emergency Sell" FontFamily="Arial" FontWeight="Bold" Foreground="Red" Cursor="Hand" Width="110">
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="2"/>
+                            </Button.Effect>
+                        </Button>
+                    </Viewbox>
                 </Grid>
             </Grid>
         </Border>

@@ -38,5 +38,25 @@ namespace JimCramerBot
         {
             this.Close();
         }
+
+        private void xMinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void xResizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(xResizeButton.Content.ToString() == "1")
+            {
+                this.WindowState = WindowState.Maximized;
+                xResizeButton.Content = "2";
+            }
+            else
+            {
+                this.WindowState = WindowState.Normal;
+                xResizeButton.Content = "1";
+            }
+
+        }
     }
 }
